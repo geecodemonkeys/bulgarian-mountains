@@ -1,0 +1,35 @@
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Bulgarian Mountains</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+
+        	<%= form_tag( {:controller => "map", :action => "upload"}, 
+        		{:method => "post", :class => "navbar-form navbar-right", :enctype => 'multipart/form-data', :id => 'uploadForm'}) do %>
+        		<div class="form-group">
+  					<%= file_field_tag 'file' %>
+  				</div>
+  				<button type="submit" class="btn btn-success" id="uploadButton">Upload GPX</button>
+			<% end %>
+          <!--form class="navbar-form navbar-right" id="uploadForm">
+            <div class="form-group">
+              <input type="file" placeholder="Upload GPX" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success" id="uploadButton">Upload GPX</button>
+          </form>
+        </div--><!--/.navbar-collapse -->
+      </div>
+    </nav>
+<div class="row">
+	<div id="theMap">
+	
+	</div>
+</div>
