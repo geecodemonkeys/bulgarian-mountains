@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'map/index'
+  get  'map/search_poi'
   post 'map/upload'
 
   root 'map#index'

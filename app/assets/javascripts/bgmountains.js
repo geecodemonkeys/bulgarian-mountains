@@ -1,5 +1,6 @@
 $( document ).ready(function() {
-    document.theMap = L.map('theMap').setView([42.85, 24.72], 8);
+	L.Icon.Default.imagePath = "assets";
+    document.theMap = L.map('theMap').setView([42.579778, 25.246189], 8);
     L.tileLayer('http://bgmtile.uni-plovdiv.net:40158/{z}/{x}/{y}.png', {
 	    attribution: '',
 	    maxZoom: 19
@@ -27,6 +28,45 @@ $( document ).ready(function() {
 		        }
 		    });
 	    
+	});
+
+	$(".js-example-basic-multiple").select2({
+  		placeholder: 'Select an option',
+  		width: '300px',
+
+  		ajax: {
+		    url: "map/search_poi",
+		    dataType: 'json',
+		    delay: 250,
+		    data: function (params) {
+		      return {
+		        q: params.term, // search term
+		        page: params.page
+		      };
+		    },
+		    processResults: function (data, params) {
+		      params.page = params.page || 1;
+		      document.searchResults = data;
+
+		      return {
+		        results: data,
+		        pagination: {
+		          more: false
+		        }
+		      };
+		    },
+		    cache: true
+	  },
+	  escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
+	  minimumInputLength: 1
+	});
+
+	$("#searchBox").on("select2:select", function (e) { 
+		var lat = e.params.data.lat;
+		var lon = e.params.data.lon;		
+		if (lat !== undefined && lon !== undefined) {
+			document.lastSearchMarker = L.marker([lat, lon]).addTo(document.theMap);
+		}
 	});
 
 });

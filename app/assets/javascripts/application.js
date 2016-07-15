@@ -15,4 +15,5 @@
 //= require turbolinks
 //= require leaflet
 //= require bootstrap.min
+//= require select2.full.min
 //= require_tree .
