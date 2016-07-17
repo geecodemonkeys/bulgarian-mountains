@@ -2,7 +2,7 @@
 
 require 'elasticsearch'
 
-client = Elasticsearch::Client.new log: true
+client = Elasticsearch::Client.new log: false
 
 client.cluster.health
 
@@ -14,7 +14,8 @@ File.open("poi.txt", "r") do |f|
     split = line.split(",")
     lat = split[2]
     lon = split[3]
-    txt = split[4]
+    txt = split[5]
+    level = split[4]
     type = split[1]
 
     bodies.push({
@@ -23,7 +24,8 @@ File.open("poi.txt", "r") do |f|
     		  "title" => txt,
               "lat" => lat,
               "lon" => lon,
-              "type" => type
+              "type" => type.to_i,
+	      "level" => level.to_i
          }}})
 
   end

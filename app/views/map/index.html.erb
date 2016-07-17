@@ -1,36 +1,17 @@
-
-<nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <!--button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button-->
-          <!-- a class="navbar-brand" href="#">Bulgarian Mountains</a -->
-          
-        </div>
-
-        
-        <div id="navbar" class="navbar-collapse collapse navbar-ex1-collapse">
-        	
-        	<div class="col-sm-3 col-md-3 pull-left">
-	        	<select class="js-example-basic-multiple" multiple="multiple" id="searchBox">
-		  		</select>
-        	</div>
-
-        	<%= form_tag( {:controller => "map", :action => "upload"}, 
-        		{:method => "post", :class => "navbar-form navbar-right", :enctype => 'multipart/form-data', :id => 'uploadForm'}) do %>
-        		<div class="form-group">
-  					<%= file_field_tag 'file' %>
-  				</div>
-  				<button type="submit" class="btn btn-success" id="uploadButton">Upload GPX</button>
-			<% end %>
-      </div>
-    </nav>
-<div class="row">
-	<div id="theMap">
-	
-	</div>
+<div id="theMap"></div>
+<div class="absoluteSearch">
+  <div class="row">
+    <div class="col-sm-3 col-md-4">
+      <select class="js-example-basic-multiple" multiple="true" id="searchBox"></select>
+    </div>
+    <div class="col-sm-3 col-md-3">
+      <%= form_tag( {:controller => "map", :action => "upload"},
+        {:method => "post", :enctype => 'multipart/form-data', :id => 'uploadForm'}) do %>
+        <label class="btn btn-default btn-file">
+          Browse<%= file_field_tag 'file' , style: 'display: none;'%>
+        </label>
+        <button type="submit" class="btn btn-success" id="uploadButton">Upload GPX</button>
+      <% end %>
+    </div>
+  </div>
 </div>

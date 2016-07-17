@@ -1,5 +1,6 @@
 body {
-  padding-top: 50px;
+  padding-top: 0px;
+  height: 100%;
 }
 @media (max-width: 979px) {
   body {
@@ -7,5 +8,13 @@ body {
   }
 }
 #theMap { 
-	height: 1000px; 
+	height: 900px;
+}
+
+.absoluteSearch {
+	position: absolute;
+    width:100%;
+    top:2.75%;
+    left: 5%;
+    z-index: 9999;
 }
